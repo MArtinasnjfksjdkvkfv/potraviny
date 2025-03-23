@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Košík - Potraviny doma</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        ::selection {
+            background-color: #3399ff;
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
+            background-color: #f0f8ff;
+        }
+
+        .required {
+            color: red;
+            font-weight: bold;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        input:valid {
+            border-color: green;
+        }
+
+        input:invalid {
+            border-color: red;
+        }
+
+        button:focus, input:focus {
+            outline: 2px solid #4CAF50;
+        }
+
+        button:active {
+            background-color: #45a049;
+        }
+
+        .cart-item {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Potraviny doma</h1>
+        <p>Vaša online destinácia pre zdravé potraviny</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" accesskey="1" tabindex="1">Domov</a></li>
+            <li><a href="produkty.html" accesskey="2" tabindex="2">Produkty</a></li>
+            <li><a href="onas.html" accesskey="3" tabindex="3">O nás</a></li>
+            <li><a href="kontakt.html" accesskey="4" tabindex="4">Kontakt</a></li>
+            <li><a href="kosik.html" accesskey="5" tabindex="5">Košík</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Váš košík</h2>
+            <div id="cart">
+                
+            </div>
+            <button onclick="clearCart()" class="button">Vymazať košík</button>
+            <div id="total"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Potraviny doma. Všetky práva vyhradené.</p>
+    </footer>
+
+    <script>
+        function displayCart() {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            const cartContainer = document.getElementById("cart");
+            const totalElement = document.getElementById("total");
+
+            cartContainer.innerHTML = ''; 
+
+            if (cart.length > 0) {
+                let total = 0;
+                cart.forEach(item => {
+                    const cartItem = document.createElement("div");
+                    cartItem.classList.add("cart-item");
+                    cartItem.innerHTML = `
+                        <p>${item.name} - ${item.quantity} x ${item.price} €</p>
+                    `;
+                    cartContainer.appendChild(cartItem);
+                    total += item.price * item.quantity;
+                });
+                totalElement.innerHTML = `Celková cena: ${total.toFixed(2)} €`;
+            } else {
+                cartContainer.innerHTML = "<p>Váš košík je prázdny.</p>";
+                totalElement.innerHTML = "";
+            }
+        }
+
+        function clearCart() {
+            localStorage.removeItem("cart");
+            displayCart();
+        }
+
+        displayCart(); 
+    </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.home-header {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: url("images/potraviny.jpg") no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.home-header .overlay {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.home-header h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+.home-header p {
+    margin: 5px 0 0;
+    font-size: 18px;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+nav {
+    position: relative;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a:focus {
+    background-color: #ddd;
+    color: #333;
+    outline: none;
+}
+
+nav ul li a:active {
+    background-color: #ccc;
+}
+
+main {
+    padding: 20px;
+}
+
+main section {
+    margin-bottom: 30px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.category-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.category {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    width: 30%;
+    text-align: center;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+.category:hover {
+    transform: scale(1.05);
+}
+
+.category h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.category p {
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .home-header {
+        height: 300px;
+    }
+
+    .home-header h1 {
+        font-size: 28px;
+    }
+
+    .home-header p {
+        font-size: 16px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    nav ul li a {
+        padding: 12px 15px;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    footer {
+        font-size: 14px;
+    }
+
+    .category {
+        width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .category {
+        width: 100%;
+    }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+}
